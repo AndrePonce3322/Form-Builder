@@ -1,23 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* BootSrap */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
 :root{
     --white: #EEEEEE;
     --black: #252A34;
     --gray: #9b9b9b;
+    --blue: #2a7ec4;
+}
+
+.bg-white{
+    background: var(--white);
+}
+
+.bg-blue{
+    background: var(--blue) !important;
+    color: white !important;
+    border: none;
+}
+
+a{
+    color: var(--gray);
 }
 
 .btn{
     border-radius: 3px;
-    background: white;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
 }
 .btn:hover{
-    background: whitesmoke;
     color: var(--black);
 }
 .btn:active{
-    background: white !important;
     color: var(--black) !important;
+}
+
+.wrong{
+    border: 1px red solid;
+    animation: wrong 0.3s ease forwards;
+}
+
+@keyframes wrong {
+    0%{
+        transform: translateX(-4px);
+    }
+    40%{
+        transform: translateX(4px);
+    }
+    60%{
+        transform: translateX(-4px);
+    }
+    80%{
+        transform: translateX(4px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
 }

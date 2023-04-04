@@ -1,36 +1,31 @@
 <div class="contenedor">
     <div class="formulario">
         <header class="titulo">
-            <h4>LOGIN</h4>
+            <h4>REGISTRO</h4>
         </header>
         <section class="descripcion">
-            <p>¡Bienvenido de vuelta!</p>
+            <p>¡Registrate para entrar a nuestras preguntas y respuestas!</p>
         </section>
 
-        <form [formGroup]="LoginForm">
+        <form [formGroup]="RegisterForm">
             <section class="inputs">
                 <div class="input">
-                    <div class="contenido_input" [ngClass]="{'wrong': wrong}">
+                    <div class="contenido_input">
                         <i class="bi bi-envelope"></i><input type="text" placeholder="email@dominio.com"
                             formControlName="email" required>
                     </div>
                 </div>
                 
                 <div class="input">
-                    <div class="contenido_input" [ngClass]="{'wrong': wrong}">
+                    <div class="contenido_input">
                         <i class="bi bi-shield-lock"></i><input type="password" placeholder="Min - 8; Max - 30"
                             formControlName="password" required>
                     </div>
                 </div>
-                <p style="color: red;" *ngIf="wrong_password"><i class="ti ti-exclamation-circle"></i> Contraseña incorrecta</p>
 
                 <div class="input">
-                    <button class="btn bg-blue col-5" type="submit" (click)="Loguear()" [disabled]="!LoginForm.valid">Log In</button>
+                    <button class="btn bg-blue col-5" type="submit" (click)="Registrar()" [disabled]="!RegisterForm.valid">Registrarse</button>
                 </div>
-
-                <span style="color: red;" *ngIf="user_not_found">
-                    <i class="ti ti-exclamation-circle"></i> Tu cuenta no existe, es necesario <a routerLink="registro">registrarse.</a>
-                </span>
 
                 <div class="input">
                     <div class="contenido_checkbox">
@@ -45,13 +40,9 @@
             </section>
 
             <section class="GoogleLogin">
-                <button class="btn bg-white" (click)="GoogleLogin()"><i class="ti ti-brand-google"></i>Login with
-                    google</button>
-                <button class="btn bg-blue" (click)="Facebook()"><i class="ti ti-brand-meta"></i>Login with Facebook</button>
+                <button class="btn bg-white" (click)="GoogleLogin()"><i class="ti ti-brand-google"></i>Registrarse</button>
+                <button class="btn bg-blue"><i class="ti ti-brand-meta"></i>Registrarse</button>
             </section>
         </form>
     </div>
-</div>
-<div class="registro">
-    <a routerLink="/registro">Registrarse</a>
 </div>
