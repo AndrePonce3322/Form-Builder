@@ -35,7 +35,7 @@
                 <div class="input">
                     <div class="contenido_checkbox">
                         <div class="slideOne">
-                            <input type="checkbox" value="None" id="slideOne" name="check" />
+                            <input type="checkbox" value="None" id="slideOne" name="check"formControlName="recordar" />
                             <label for="slideOne"></label>
                         </div>
                         <span>Recordarmelo más tarde</span>
@@ -46,11 +46,17 @@
 
             <section class="GoogleLogin">
                 <button class="btn bg-white" (click)="GoogleLogin()"><i class="ti ti-brand-google"></i>Login with
-                    google</button>
+                    Google</button>
                 <button class="btn bg-blue" (click)="Facebook()"><i class="ti ti-brand-meta"></i>Login with Facebook</button>
             </section>
         </form>
     </div>
+
+    <div class="alerta alerta-danger" [ngClass]="{'show-alert': false}">
+        <p><i class="bi bi-exclamation-diamond"></i> No es posible loguearse, revisa tus datos.</p>
+    </div>
+
+
 </div>
 <div class="registro">
     <a routerLink="/registro">Registrarse</a>

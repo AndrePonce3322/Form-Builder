@@ -11,11 +11,17 @@
             <section class="inputs">
                 <div class="input">
                     <div class="contenido_input">
-                        <i class="bi bi-envelope"></i><input type="text" placeholder="email@dominio.com"
+                        <i class="bi bi-envelope"></i><input type="email" placeholder="email@example.com"
                             formControlName="email" required>
                     </div>
                 </div>
-                
+
+                <span style="color: #FC2947;"
+                    *ngIf="RegisterForm.get('email')?.invalid && RegisterForm.get('email')?.touched">
+                    <i class="ti ti-exclamation-circle"></i> Este campo es requerido.
+                </span>
+
+
                 <div class="input">
                     <div class="contenido_input">
                         <i class="bi bi-shield-lock"></i><input type="password" placeholder="Min - 8; Max - 30"
@@ -23,26 +29,46 @@
                     </div>
                 </div>
 
+                <p style="color: #FC2947;"
+                    *ngIf="RegisterForm.get('password')?.invalid && RegisterForm.get('password')?.touched">
+                    <i class="ti ti-exclamation-circle"></i> Este campo es requerido.
+                </p>
+
+
                 <div class="input">
-                    <button class="btn bg-blue col-5" type="submit" (click)="Registrar()" [disabled]="!RegisterForm.valid">Registrarse</button>
+                    <button class="btn bg-blue col-5" type="submit" (click)="Registrar()"
+                        [disabled]="!RegisterForm.valid">Registrarse</button>
                 </div>
+
+                <span style="color: #FC2947;" *ngIf="email_already_use">
+                    <i class="ti ti-exclamation-circle"></i> Tu email ya está siendo usado. <a
+                        routerLink="/login">Loguearse</a>
+                </span>
 
                 <div class="input">
                     <div class="contenido_checkbox">
                         <div class="slideOne">
-                            <input type="checkbox" value="None" id="slideOne" name="check" />
+                            <input type="checkbox" value="None" id="slideOne" name="check" formControlName="recordar" />
                             <label for="slideOne"></label>
                         </div>
                         <span>Recordarmelo más tarde</span>
                     </div>
                 </div>
-
             </section>
 
             <section class="GoogleLogin">
-                <button class="btn bg-white" (click)="GoogleLogin()"><i class="ti ti-brand-google"></i>Registrarse</button>
-                <button class="btn bg-blue"><i class="ti ti-brand-meta"></i>Registrarse</button>
+                <button class="btn bg-white" (click)="GoogleLogin()"><i
+                        class="ti ti-brand-google"></i>Registrarse</button>
+                <button class="btn bg-blue" (click)="Facebook()"><i class="ti ti-brand-meta"></i>Registrarse</button>
             </section>
         </form>
     </div>
+
+    <div class="alerta alerta-danger" [ngClass]="{'show-alert': alert_danger}">
+        <p><i class="bi bi-exclamation-diamond"></i> No es posible loguearse, revisa tus datos.</p>
+    </div>
+    <div class="alerta alerta-success" [ngClass]="{'show-alert': alert_success}">
+        <p>Te has registrado correctamente <i class="ti ti-checks"></i></p>
+    </div>
+
 </div>

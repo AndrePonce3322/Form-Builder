@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.LoginForm = this.formBuilder.group({
       email: new FormControl('', Validators.email),
-      password: new FormControl('', [Validators.minLength(8), Validators.maxLength(30)])
+      password: new FormControl('', [Validators.minLength(8), Validators.maxLength(30)]),
+      recordar: new FormControl(true)
     })
   }
 
@@ -34,6 +35,11 @@ export class LoginComponent implements OnInit {
       this.user_not_found = false;
       this.wrong_password = false;
       this.wrong = false;
+
+      if(this.LoginForm.value.recordar == true){
+        this.Recordarme();
+      }
+
       console.log(respuesta);
     }).catch((error: any) => {
       switch (error.code) {
@@ -47,7 +53,6 @@ export class LoginComponent implements OnInit {
           break;
       }
     })
-    this.LoginForm.reset();
   }
 
   GoogleLogin() {
@@ -61,6 +66,14 @@ export class LoginComponent implements OnInit {
       console.log(respuesta);
     }).catch(error=>{
       console.log('Chupamela, no tenes la politica válida')
+    })
+  }
+
+  Recordarme() {
+    this.login_service.Persitencia().then((respuesta) => {
+      console.log('La persistencia está en función', respuesta);
+    }).catch((error) => {
+      console.log('No se pudo agregar la persistencia', error);
     })
   }
 

@@ -3,60 +3,105 @@
 /* BootSrap */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
-:root{
+:root {
     --white: #EEEEEE;
     --black: #252A34;
     --gray: #9b9b9b;
     --blue: #2a7ec4;
+    --green: #609966;
 }
 
-.bg-white{
+
+input[type=email]:focus::placeholder, input[type=password]:focus::placeholder{
+    color: var(--white);
+}
+
+.bg-white {
     background: var(--white);
 }
 
-.bg-blue{
+.bg-blue {
     background: var(--blue) !important;
     color: white !important;
     border: none;
 }
 
-a{
+.alerta {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .3s ease-in-out;
+    min-width: 100px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.alerta * {
+    padding: 0;
+    margin: 0;
+}
+
+.alerta-danger {
+    background: crimson;
+    color: white;
+}
+
+.alerta-success{
+    background: var(--green);
+    color: white;
+}
+
+.show-alert{
+    top: 10px;
+}
+
+a {
     color: var(--gray);
 }
 
-.btn{
+.btn {
     border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
 }
-.btn:hover{
+
+.btn:hover {
     color: var(--black);
 }
-.btn:active{
+
+.btn:active {
     color: var(--black) !important;
 }
 
-.wrong{
+.wrong {
     border: 1px red solid;
     animation: wrong 0.3s ease forwards;
 }
 
 @keyframes wrong {
-    0%{
+    0% {
         transform: translateX(-4px);
     }
-    40%{
+
+    40% {
         transform: translateX(4px);
     }
-    60%{
+
+    60% {
         transform: translateX(-4px);
     }
-    80%{
+
+    80% {
         transform: translateX(4px);
     }
-    100%{
+
+    100% {
         transform: translateX(0px);
     }
 }
