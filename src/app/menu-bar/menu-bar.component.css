@@ -1,0 +1,56 @@
+.body{
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1012%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(246%2c 241%2c 241%2c 1)'%3e%3c/rect%3e%3cpath d='M857.48 612.16C980.34 586.1 995 296.29 1221.66 266.13 1448.32 235.97 1481.33 66.01 1585.84 58.93' stroke='rgba(25%2c 167%2c 206%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M787.69 633.94C907.23 623.09 958.31 391.37 1191.66 374.47 1425.02 357.57 1481.67 168.04 1595.64 161.67' stroke='rgba(25%2c 167%2c 206%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M595.07 668.35C687.08 665.31 664.34 528.09 933.34 522.88 1202.34 517.67 1432.6 312.57 1609.89 310.08' stroke='rgba(25%2c 167%2c 206%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M491.81 669.81C648.47 668.96 784 535.97 1103.13 532.03 1422.27 528.09 1551.25 306.17 1714.46 302.43' stroke='rgba(25%2c 167%2c 206%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M496.95 562.37C641.35 558.63 745.83 358.79 1034.78 351.23 1323.74 343.67 1428.07 142.25 1572.62 138.43' stroke='rgba(25%2c 167%2c 206%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1012'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+/* #F6F1F1 */
+
+.navbar * {
+    color: var(--white);
+}
+
+.navbar {
+    position: relative;
+    background: #19A7CE !important;
+    padding: 10px 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.navbar-brand span {
+    font-size: 26px;
+}
+
+.navbar-brand i {
+    font-size: 43px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.contenido {
+    width: 100%;
+    padding: 45px 50px 50px 50px;
+}
+
+.bienvenida{
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 26px;
+}

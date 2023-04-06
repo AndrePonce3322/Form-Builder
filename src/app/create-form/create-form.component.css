@@ -1,0 +1,190 @@
+.contenedor {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor .contenido {
+    position: relative;
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.descripcion {
+    color: var(--gray);
+}
+
+.contenedor .contenido .titulo {
+    position: relative;
+    width: 95%;
+    min-height: 240px;
+    padding: 15px;
+    padding-top: 25px;
+    background: white;
+    border-radius: 3px 3px 0px 0px;
+    border-top: 10px var(--dark-blue) solid;
+    font-family: 'Jost', sans-serif;
+}
+
+.titulo input {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0px;
+    padding-bottom: 10px;
+    border-bottom: 2px gray solid;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.input-titulo {
+    width: 100%;
+    height: 40px;
+    font-size: 25px;
+}
+
+input[type=text]:focus {
+    border-bottom: 2px var(--dark-blue) solid;
+}
+
+.input-titulo::placeholder {
+    color: black;
+}
+
+.titulo input:last-child {
+    margin-top: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    width: 95%;
+    position: absolute;
+    bottom: 15px;
+}
+
+.btn {
+    color: white;
+}
+
+.btn-blue {
+    background: var(--dark-blue) !important;
+    color: white !important;
+}
+
+.btn-danger {
+    background: var(--red);
+    color: white !important;
+}
+
+.pregunta{
+    position: relative;
+    width: 95%;
+    min-height: 100px;
+    padding: 15px;
+    padding-top: 25px;
+    border-radius: 3px 3px 0px 0px;
+    border-top: 10px var(--dark-blue) solid;
+    font-family: 'Jost', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin: 10px 0px;
+}
+
+.preguntas{
+    width: 100%;
+}
+
+.preguntas input{
+    border: none;
+    background: none;
+    outline: none;
+    margin: 0px 0px 20px 0px;
+    font-size: 20px;
+    border-bottom: 1px var(--gray) solid;
+    width: 100%;
+}
+
+.preguntas input:focus{
+    border-bottom: 1px var(--dark-blue) solid;
+}
+
+.preguntas input::placeholder{
+    color: black;
+}
+
+.respuestas{
+    position: relative;
+}
+
+.respuestas ul{
+    padding: 0px;
+    list-style: none;
+}
+
+.respuestas ul li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 2px 0px 2px 0px;
+}
+
+.respuestas ul li input[type=radio]{
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.respuestas input[type=text]{
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 1px transparent solid;
+}
+
+.respuestas input[type=text]:focus{
+    border-bottom: 1px gray solid;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.add, .delete{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0px;
+    left: -50px;
+    background: var(--dark-blue);
+    color: white;
+    display: grid;
+    place-items: center;
+    padding: 0px;
+    margin: 0px;
+    font-size: 23px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.1s linear;
+}
+.add:hover{
+    background: #0d5272;
+}
+.add:active, .delete{
+    transform: scale(0.94);
+}
+
+.delete{
+    top: 50px;
+    background: var(--red);
+}

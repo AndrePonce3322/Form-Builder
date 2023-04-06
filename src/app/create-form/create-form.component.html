@@ -1,0 +1,60 @@
+<div class="contenedor">
+    <div class="contenido">
+
+        <form [formGroup]="Form">
+            <!-- TITULO DEL FORMULARIO O CABECERA -->
+            <div class="titulo">
+                <input type="text" name="titulo" placeholder="¡Crea tus propios formularios personalizados!"
+                    class="input-titulo">
+                <section class="descripcion">
+                    <input type="text" placeholder="Agrega una descripcion" name="descripcion"
+                        >
+                </section>
+
+                <section class="buttons">
+                    <button class="btn btn-danger">Borrar</button>
+                </section>
+            </div>
+
+            <!-- END -->
+
+
+            <section class="pregunta">
+                <div class="preguntas">
+                    <input type="text" placeholder="Pregunta" name="pregunta" formControlName="pregunta">
+                </div>
+                <div class="respuestas">
+                    <ul>
+                        <li>
+                            <input type="radio" name="respuesta_check">
+                            <input type="text" name="respuesta" id="respuesta" placeholder="Opciones" formControlName="respuesta">
+                        </li>
+                    </ul>
+                </div>
+                <section class="add">
+                    <i class="ti ti-plus"></i>
+                </section>
+            </section>
+
+            <section class="pregunta" *ngFor="let datos of Almacenador; let i = index">
+                <div class="preguntas">
+                    <input type="text" placeholder="Pregunta" name="pregunta" formControlName="pregunta">
+                </div>
+                <div class="respuestas">
+                    <ul>
+                        <li>
+                            <input type="radio" name="respuesta_check">
+                            <input type="text" name="respuesta" id="respuesta" placeholder="Opciones" formControlName="respuesta">
+                        </li>
+                    </ul>
+                </div>
+                <section class="add">
+                    <i class="ti ti-plus"></i>
+                </section>
+            </section>
+
+            <button class="btn btn-blue" (click)="Guardar()">Hacer preguntas</button>
+            <!-- END -->
+        </form>
+    </div>
+</div>

@@ -32,10 +32,16 @@ export class RegistroComponent implements OnInit {
       return console.log('No te puedes loguear');
     }
 
-    this.register_service.registrar(this.RegisterForm.value).then(() => {
+    this.register_service.registrar(this.RegisterForm.value).then((respuesta: any) => {
       this.Alerta_success();
 
-      if(this.RegisterForm.value.recordar == true){
+      console.log(respuesta);
+      console.log(respuesta._tokenResponse);
+      
+      console.log({'IdToken ':respuesta._tokenResponse.idToken});
+
+
+      if (this.RegisterForm.value.recordar == true) {
         this.Recordarme();
       }
 

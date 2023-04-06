@@ -9,6 +9,8 @@
     --gray: #9b9b9b;
     --blue: #2a7ec4;
     --green: #609966;
+    --dark-blue: #146C94;
+    --red: #E21818;
 }
 
 
@@ -103,5 +105,20 @@ a {
 
     100% {
         transform: translateX(0px);
+    }
+}
+
+.cursor{
+    position: relative;
+    animation: cursor 0.6s alternate infinite linear;
+    top: -4px;
+}
+
+@keyframes cursor {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
     }
 }
