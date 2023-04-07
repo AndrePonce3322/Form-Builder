@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'forms', component: MenuBarComponent,
     children: [
       { path: 'list', component: ListFormsComponent },
-      { path: 'create/:id', component: CreateFormComponent }
+      { path: 'create', component: CreateFormComponent }
   ]}
 ]
 

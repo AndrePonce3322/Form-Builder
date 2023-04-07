@@ -8,17 +8,17 @@ import { CompartirDataService } from '../Services/compartir-data.service';
 })
 export class MenuBarComponent {
 
-  // nombre: any;
+  nombre: any;
 
-  // constructor(private compartir_datos: CompartirDataService) {
-  //   this.compartir_datos.share.subscribe((respuesta: any) => {
-  //     const full_name = respuesta.user.displayName;
+  constructor(private compartir_datos: CompartirDataService) {
+    this.compartir_datos.share.subscribe((respuesta: any) => {
+      const full_name = respuesta.user.displayName;
 
-  //     this.nombre = full_name.split(' ')[0];
-  //     console.log(this.nombre);
+      this.nombre = full_name.split(' ')[0];
+      console.log(this.nombre);
 
-  //   });
-  // }
+    });
+  }
 
 
 

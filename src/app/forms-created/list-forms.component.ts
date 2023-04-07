@@ -14,7 +14,7 @@ export class ListFormsComponent implements OnInit {
 
   UID!: string;
   data: any;
-  
+
   ngOnInit(): void {
     this.recibirUID.share.subscribe((datos: any) => {
       this.UID = datos.user.uid;
@@ -27,18 +27,17 @@ export class ListFormsComponent implements OnInit {
   }
 
   Crear() {
-    this.navegar.navigate([`forms/create/${this.GenerarCodigo()}`]);
+    this.navegar.navigate([`forms/create`]);
   }
 
-  GenerarCodigo() {
-    let codigo = '';
-    const caracteres = 'ab__cde+$1f_65684++ghi&j323k++lmnopq2$_&iminthespace mi bro34s123rst_8uvwxyz';
+  AbrirCuestionario(datos: any) {
+    console.log({ datosdelcuestionario: datos });
 
-    for (let i = 0; i < 25; i++) {
-      codigo += caracteres[Math.round(Math.random() * caracteres.length)];
+    if (confirm('Estas seguro que quieres borrar este cuestionario?')) {
+      this.basededatos.EliminarData(this.UID, datos.id).then(()=>{
+        console.log('Datos eliminados correctamente!')
+      })
     }
-
-    return codigo
   }
 
 }

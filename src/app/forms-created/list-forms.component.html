@@ -6,9 +6,9 @@
         </div>
     </a>
 
-    <div class="card" *ngFor="let datos of data;">
+    <div class="card" *ngFor="let datos of data;" (click)="AbrirCuestionario(datos)">
         <i class="ti ti-article"></i>
         <p>Titulo: <span style="color: gray;">{{datos.cabecera.titulo}}</span></p>
         <p>Descripción: <span style="color: gray;">{{datos.cabecera.descripcion}}</span></p>
     </div>
-</div>
+</div>  
