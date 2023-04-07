@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { CompartirDataService } from '../Services/compartir-data.service';
+import { CuestionarioService } from '../Services/cuestionario.service';
 
 @Component({
   selector: 'app-create-form',
@@ -8,25 +9,83 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CreateFormComponent implements OnInit {
 
-  Almacenador: any[] = [];
-  Form!: FormGroup;
+  constructor(private recibir: CompartirDataService, private enviar_cuestionario: CuestionarioService) { }
 
-  constructor(private FormBuilder: FormBuilder) { }
+  uid!: string;
 
-  ngOnInit() {
-    console.log(this.Almacenador);
-    this.Form = this.FormBuilder.group({
-      pregunta: '',
-      respuesta: ''
+  // Variables of the object
+  titulo!: any;
+  descripcion!: any;
+
+  // DOM variables
+  success_full_alert!:boolean;
+
+  ngOnInit(): void {
+    this.recibir.share.subscribe(async (respuesta: any) => {
+      this.uid = await respuesta.user.uid;
+      console.log(this.uid);
     })
   }
 
+  Almacenador: any[] = [
+    {
+      cuestionario: {
+        pregunta: '',
+        respuesta1: '',
+        respuesta2: '',
+        respuesta3: '',
+        respuesta4: ''
+      }
+    },
+    {
+      cuestionario: {
+        pregunta: '',
+        respuesta1: '',
+        respuesta2: '',
+        respuesta3: '',
+        respuesta4: ''
+      }
+    },
+    {
+      cuestionario: {
+        pregunta: '',
+        respuesta1: '',
+        respuesta2: '',
+        respuesta3: '',
+        respuesta4: ''
+      }
+    },
+    {
+      cuestionario: {
+        pregunta: '',
+        respuesta1: '',
+        respuesta2: '',
+        respuesta3: '',
+        respuesta4: ''
+      }
+    }
+  ];
+
   Guardar() {
-    this.Almacenador.push(this.Form.value);
+    const header = { titulo: this.titulo, descripcion: this.descripcion }
 
-    console.log(this.Almacenador);
-    console.log(this.Form.value);
+    const all = {
+      cabecera: header,
+      secciones: this.Almacenador
+    }
 
+    this.enviar_cuestionario.enviarData(all,this.uid).then(() => {
+      this.Alerta_success();
+    })
+  }
+
+  Alerta_success() {
+    this.success_full_alert = true;
+    const quitar_alerta = () => {
+      // Quitando alerta
+      this.success_full_alert = false;
+    }
+    setTimeout(quitar_alerta, 4000);
   }
 
 

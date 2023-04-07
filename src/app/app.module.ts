@@ -18,6 +18,7 @@ import { RoutingModule } from './routing/routing.module';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { CreateFormComponent } from './create-form/create-form.component';
+import { ListFormsComponent } from './forms-created/list-forms.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateFormComponent } from './create-form/create-form.component';
     LoginComponent,
     RegistroComponent,
     MenuBarComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    ListFormsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,8 +12,8 @@ export class LoginService {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
-  async login({ email, password }: any) {
-    return await signInWithEmailAndPassword(this.auth, email, password);
+  login({ email, password }: any) {
+    return signInWithEmailAndPassword(this.auth, email, password);
   }
 
   GoogleLogin() {

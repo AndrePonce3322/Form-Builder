@@ -10,10 +10,12 @@
 .card{
     width: 220px;
     height: 220px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
     gap: 10px;
     border-radius: 1px ;
     border-top: #19A7CE 3px solid;
@@ -31,7 +33,4 @@
 
 a{
     text-decoration: none;
-}
-a:hover{
-    background: #6d6d6d56;
 }

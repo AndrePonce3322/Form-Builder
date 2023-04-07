@@ -11,7 +11,7 @@
             <section class="inputs">
                 <div class="input">
                     <div class="contenido_input" [ngClass]="{'wrong': wrong}">
-                        <i class="bi bi-envelope"></i><input type="text" placeholder="email@dominio.com"
+                        <i class="bi bi-envelope"></i><input type="text" placeholder="email@example.com"
                             formControlName="email" required>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                 </div>
 
                 <span style="color: red;" *ngIf="user_not_found">
-                    <i class="ti ti-exclamation-circle"></i> Tu cuenta no existe, es necesario <a routerLink="registro">registrarse.</a>
+                    <i class="ti ti-exclamation-circle"></i> Tu cuenta no existe, es necesario <a routerLink="/registro">registrarse.</a>
                 </span>
 
                 <div class="input">

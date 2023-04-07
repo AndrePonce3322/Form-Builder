@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../Services/login.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CompartirDataService } from '../Services/compartir-data.service';
 
 @Component({
   selector: 'app-registro',
@@ -16,7 +18,7 @@ export class RegistroComponent implements OnInit {
   alert_danger!: boolean;
   alert_success!: boolean;
 
-  constructor(private register_service: LoginService, private formBuilder: FormBuilder) { }
+  constructor(private register_service: LoginService, private formBuilder: FormBuilder, private navegar: Router, private enviarUID: CompartirDataService) { }
 
   ngOnInit(): void {
     this.RegisterForm = this.formBuilder.group({
@@ -36,17 +38,17 @@ export class RegistroComponent implements OnInit {
       this.Alerta_success();
 
       console.log(respuesta);
-      console.log(respuesta._tokenResponse);
       
-      console.log({'IdToken ':respuesta._tokenResponse.idToken});
-
+      this.enviarUID.EnviarData(respuesta);
+      this.navegar.navigate(['/forms/list']);
+        
+      // Ir a la siguiente página 
+      // this.navegar.navigate(['/forms/list']);
 
       if (this.RegisterForm.value.recordar == true) {
         this.Recordarme();
       }
-
       this.RegisterForm.reset();
-
     }).catch(error => {
       if (error.code == 'auth/email-already-in-use') {
         this.email_already_use = true;
@@ -56,7 +58,15 @@ export class RegistroComponent implements OnInit {
   }
 
   GoogleLogin() {
-    this.register_service.GoogleLogin().then(() => {
+    this.register_service.GoogleLogin().then((respuesta) => {
+      // Enviar UID
+      this.enviarUID.EnviarData(respuesta);
+
+      // Navegar
+      this.navegar.navigate(['/forms/list']);
+
+      console.log(respuesta);
+      
       this.Alerta_success();
     }).catch(error => console.log(error));
   }
