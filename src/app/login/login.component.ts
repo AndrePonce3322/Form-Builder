@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
     this.login_service.FacebookLogin().then(respuesta => {
       console.log(respuesta);
     }).catch(() => {
-      console.log('Chupamela, no tenes la politica válida')
+      console.log('No tienes la politica válida');
     })
   }
 

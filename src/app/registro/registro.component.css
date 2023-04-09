@@ -4,7 +4,9 @@
     height: 100%;
     display: flex;
     align-items: center;
-    background: url('https://www.xtrafondos.com/wallpapers/programacion-computadora-y-lentes-10837.jpg');
+    background-color: #252A34;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%2331403e' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%233d5648' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%23486d52' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%2354835c' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23609966' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 10px;
@@ -101,8 +103,10 @@
 .GoogleLogin {
     width: 100%;
     margin-top: 20px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
+    gap: 20px;
 }
 
 .bg-white:active {
@@ -146,11 +150,11 @@ input[type=checkbox]:checked+label {
     background: var(--blue);
 }
 
-a{
+a {
     color: var(--white);
 }
 
-.alerta{
+.alerta {
     position: absolute;
     top: -100%;
     left: 50%;
@@ -158,6 +162,12 @@ a{
     transition: .3s ease-in-out;
 }
 
-.show-alert{
+.show-alert {
     top: 10px;
+}
+
+#login {
+    position: absolute;
+    top: 10px;
+    right: 40px;
 }

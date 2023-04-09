@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompartirDataService } from '../Services/compartir-data.service';
 import { CuestionarioService } from '../Services/cuestionario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-form',
@@ -9,7 +10,7 @@ import { CuestionarioService } from '../Services/cuestionario.service';
 })
 export class CreateFormComponent implements OnInit {
 
-  constructor(private recibir: CompartirDataService, private enviar_cuestionario: CuestionarioService) { }
+  constructor(private recibir: CompartirDataService, private enviar_cuestionario: CuestionarioService, private navegar: Router) { }
 
   uid!: string;
 
@@ -18,7 +19,7 @@ export class CreateFormComponent implements OnInit {
   descripcion!: any;
 
   // DOM variables
-  success_full_alert!:boolean;
+  success_full_alert!: boolean;
 
   ngOnInit(): void {
     this.recibir.share.subscribe(async (respuesta: any) => {
@@ -74,8 +75,9 @@ export class CreateFormComponent implements OnInit {
       secciones: this.Almacenador
     }
 
-    this.enviar_cuestionario.enviarData(all,this.uid).then(() => {
+    this.enviar_cuestionario.enviarData(all, this.uid).then(() => {
       this.Alerta_success();
+      this.navegar.navigate(['/forms/list']);
     })
   }
 

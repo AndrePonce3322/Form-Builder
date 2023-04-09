@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, deleteDoc} from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
 import { CompartirDataService } from './compartir-data.service';
 
 
@@ -8,7 +8,7 @@ import { CompartirDataService } from './compartir-data.service';
 })
 export class CuestionarioService {
 
-  constructor(private firestore: Firestore, private recibirID: CompartirDataService) { }
+  constructor(private firestore: Firestore) { }
 
   enviarData(datos: any, uid: string) {
     const ref = collection(this.firestore, uid);
@@ -22,9 +22,7 @@ export class CuestionarioService {
 
   EliminarData(uid: string, id: string){
     const referencia = doc(this.firestore, `${uid}/${id}`);
-    
     return deleteDoc(referencia);
-
   }
 
 }

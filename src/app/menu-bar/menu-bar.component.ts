@@ -13,10 +13,8 @@ export class MenuBarComponent {
   constructor(private compartir_datos: CompartirDataService) {
     this.compartir_datos.share.subscribe((respuesta: any) => {
       const full_name = respuesta.user.displayName;
-
       this.nombre = full_name.split(' ')[0];
       console.log(this.nombre);
-
     });
   }
 

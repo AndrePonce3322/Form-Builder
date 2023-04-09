@@ -10,7 +10,7 @@
 
 .card{
     width: 220px;
-    height: 220px;
+    min-height: 220px;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -20,8 +20,14 @@
     gap: 10px;
     border-radius: 1px ;
     border-top: #19A7CE 3px solid;
+    font-family: 'Jost', sans-serif;
     transition: 0.1s;
     cursor: pointer;
+}
+
+.icon{
+    width: 100%;
+    font-size: 35px;
 }
 
 .card:nth-child(1) i{
