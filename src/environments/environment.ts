@@ -6,6 +6,5 @@ export const environment = {
     apiKey: 'AIzaSyCazI4kDYk7cx0gWqsp5Y9crBWoKNC9Vww',
     authDomain: 'cuestionario-ef58b.firebaseapp.com',
     messagingSenderId: '1079079327115',
-  },
-    
+  },   
 }
