@@ -17,7 +17,4 @@ export class MenuBarComponent {
       console.log(this.nombre);
     });
   }
-
-
-
 }
