@@ -26,7 +26,7 @@
     padding-top: 25px;
     background: white;
     border-radius: 3px 3px 0px 0px;
-    border-top: 10px var(--dark-blue) solid;
+    border-top: 10px var(--blue) solid;
     font-family: 'Jost', sans-serif;
 }
 
@@ -50,10 +50,6 @@
 
 input[type=text]:focus {
     border-bottom: 2px var(--dark-blue) solid;
-}
-
-.input-titulo::placeholder {
-    color: black;
 }
 
 .titulo input:last-child {
@@ -82,14 +78,14 @@ input[type=text]:focus {
     color: white !important;
 }
 
-.pregunta{
+.pregunta {
     position: relative;
     width: 95%;
     min-height: 100px;
     padding: 15px;
     padding-top: 25px;
     border-radius: 3px 3px 0px 0px;
-    border-top: 10px var(--dark-blue) solid;
+    border-top: 10px var(--blue) solid;
     font-family: 'Jost', sans-serif;
     display: flex;
     flex-direction: column;
@@ -97,11 +93,11 @@ input[type=text]:focus {
     margin: 10px 0px;
 }
 
-.preguntas{
+.preguntas {
     width: 100%;
 }
 
-.preguntas input{
+.preguntas input {
     border: none;
     background: none;
     outline: none;
@@ -111,48 +107,48 @@ input[type=text]:focus {
     width: 100%;
 }
 
-.preguntas input:focus{
+.preguntas input:focus {
     border-bottom: 1px var(--dark-blue) solid;
 }
 
-.preguntas input::placeholder{
-    color: black;
+.preguntas input::placeholder {
+    color: var(--gray);
 }
 
-.respuestas{
+.respuestas {
     position: relative;
 }
 
-.respuestas ul{
+.respuestas ul {
     padding: 0px;
     list-style: none;
 }
 
-.respuestas ul li{
+.respuestas ul li {
     display: flex;
     align-items: center;
     gap: 10px;
     margin: 2px 0px 2px 0px;
 }
 
-.respuestas ul li input[type=radio]{
+.respuestas ul li input[type=radio] {
     width: 22px;
     height: 22px;
     cursor: pointer;
 }
 
-.respuestas input[type=text]{
+.respuestas input[type=text] {
     border: none;
     background: none;
     outline: none;
     border-bottom: 1px transparent solid;
 }
 
-.respuestas input[type=text]:focus{
+.respuestas input[type=text]:focus {
     border-bottom: 1px gray solid;
 }
 
-form{
+form {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -160,7 +156,8 @@ form{
 }
 
 
-.add, .delete{
+.add,
+.delete {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -177,14 +174,50 @@ form{
     cursor: pointer;
     transition: 0.1s linear;
 }
-.add:hover{
+
+.add:hover {
     background: #0d5272;
 }
-.add:active, .delete{
+
+.add:active,
+.delete {
     transform: scale(0.94);
 }
 
-.delete{
+.delete {
     top: 50px;
     background: var(--red);
+}
+
+.form-list{
+    position: absolute;
+    background: var(--blue);
+    top: 0px;
+    left: 0px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+
+.form-list:hover{
+    background: #0d5272;
+}
+
+.form-list a{
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+}
+
+@media screen and (max-width: 1080px){
+    .form-list{
+        top: -50px;
+        left: -30px;
+    }
 }

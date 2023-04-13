@@ -28,9 +28,12 @@
 .icon{
     width: 100%;
     font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.card:nth-child(1) i{
+.card:nth-child(1) i, .element-icon{
     font-size: 50px;
 }
 

@@ -1,30 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CuestionarioService } from '../Services/cuestionario.service';
-import { CompartirDataService } from '../Services/compartir-data.service';
+import { LocalStorageService } from '../Services/local-storage.service';
 
 @Component({
   selector: 'app-forms-created',
   templateUrl: './list-forms.component.html',
   styleUrls: ['./list-forms-component.css']
 })
-export class ListFormsComponent implements OnInit {
+export class ListFormsComponent {
 
-  constructor(private navegar: Router, private recibirUID: CompartirDataService, private basededatos: CuestionarioService) { }
-
+  // Variables del login
+  localStorageData: any = this.localStorage.get('cuenta');
   UID!: string;
   data: any;
 
-  ngOnInit(): void {
-    this.recibirUID.share.subscribe((datos: any) => {
-      this.UID = datos.user.uid;
-    })
+  constructor(private navegar: Router, private basededatos: CuestionarioService, private localStorage: LocalStorageService) {
+    this.UID = this.localStorageData.user.uid;
 
     this.basededatos.obtenerData(this.UID).subscribe((respuesta: any) => {
-      console.log('Data obtenida:', respuesta);
       this.data = respuesta;
     })
-  }
+   }
 
   Crear() {
     this.navegar.navigate([`forms/create`]);
@@ -34,7 +31,7 @@ export class ListFormsComponent implements OnInit {
     console.log({ datosdelcuestionario: datos });
 
     if (confirm('Estas seguro que quieres borrar este cuestionario?')) {
-      this.basededatos.EliminarData(this.UID, datos.id).then(()=>{
+      this.basededatos.EliminarData(this.UID, datos.id).then(() => {
         console.log('Datos eliminados correctamente!')
       })
     }

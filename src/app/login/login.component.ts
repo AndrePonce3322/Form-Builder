@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { CompartirDataService } from '../Services/compartir-data.service';
 import { LoginService } from '../Services/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalStorageService } from '../Services/local-storage.service';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     private login_service: LoginService,
     private formBuilder: FormBuilder,
     private compartir_datos: CompartirDataService,
-    private navegador: Router
+    private navegador: Router,
+    private localStorage: LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -36,10 +38,14 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.minLength(8), Validators.maxLength(30)]),
       recordar: new FormControl(true)
     })
+
+
+    if (localStorage.getItem('cuenta') != null) {
+      this.navegador.navigate(['forms/list']);
+    }
   }
 
   Loguear() {
-
     if (this.LoginForm.value.password.length < 8) {
       return alert('No te puedes loguear');
     }
@@ -48,6 +54,9 @@ export class LoginComponent implements OnInit {
       // Enviando los datos al servicio de compatir datos
       this.compartir_datos.EnviarData(respuesta);
       this.compartir_datos.RecibirDatos();
+
+      // Enviando datos al localStorage
+      this.localStorage.set('cuenta', respuesta);
 
       // Alerta de success
       this.Alerta_success();
@@ -82,6 +91,9 @@ export class LoginComponent implements OnInit {
       this.compartir_datos.EnviarData(data);
       this.compartir_datos.RecibirDatos();
 
+      // Guardando los datos en localStorage
+      this.localStorage.set('cuenta', data);
+
       this.Alerta_success();
 
       this.user_not_found = false;
@@ -99,15 +111,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  Recordarme() {
-    this.login_service.Persitencia().then((respuesta) => {
-      console.log('La persistencia está en función', respuesta);
-    }).catch((error) => {
-      console.log('No se pudo agregar la persistencia', error);
-    })
-  }
-
-
+  Recordarme() { }
 
   Alerta_danger() {
     this.alert_danger = true;
@@ -125,9 +129,7 @@ export class LoginComponent implements OnInit {
       // Quitando alerta
       this.alert_success = false;
     }
-    setTimeout(quitar_alerta, 4000);
-
-
+    setTimeout(quitar_alerta, 2000);
   }
 
 

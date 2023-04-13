@@ -15,9 +15,7 @@ export class CompartirDataService {
   }
 
   RecibirDatos() {
-    return this.share.subscribe((datos) => {
-      console.log('Los datos recibidos son:', datos)
-    })
+    return this.share.subscribe(() =>{})
   }
 
 }

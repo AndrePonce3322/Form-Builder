@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { CompartirDataService } from '../Services/compartir-data.service';
-import { CuestionarioService } from '../Services/cuestionario.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CuestionarioService } from '../Services/cuestionario.service';
+import { LocalStorageService } from '../Services/local-storage.service';
 
 @Component({
   selector: 'app-create-form',
   templateUrl: './create-form.component.html',
   styleUrls: ['./create-form.component.css']
 })
-export class CreateFormComponent implements OnInit {
+export class CreateFormComponent {
 
-  constructor(private recibir: CompartirDataService, private enviar_cuestionario: CuestionarioService, private navegar: Router) { }
+  UID!: string;
 
-  uid!: string;
+  constructor( private enviar_cuestionario: CuestionarioService, private navegar: Router, private localStorage: LocalStorageService) { 
+    // Tomando la data del ser
+    this.UID = localStorage.get('cuenta').user.uid;
+  }
 
   // Variables of the object
   titulo!: any;
@@ -20,13 +23,6 @@ export class CreateFormComponent implements OnInit {
 
   // DOM variables
   success_full_alert!: boolean;
-
-  ngOnInit(): void {
-    this.recibir.share.subscribe(async (respuesta: any) => {
-      this.uid = await respuesta.user.uid;
-      console.log(this.uid);
-    })
-  }
 
   Almacenador: any[] = [
     {
@@ -75,7 +71,7 @@ export class CreateFormComponent implements OnInit {
       secciones: this.Almacenador
     }
 
-    this.enviar_cuestionario.enviarData(all, this.uid).then(() => {
+    this.enviar_cuestionario.enviarData(all, this.UID).then(() => {
       this.Alerta_success();
       this.navegar.navigate(['/forms/list']);
     })

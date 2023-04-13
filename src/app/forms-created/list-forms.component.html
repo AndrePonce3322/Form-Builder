@@ -2,15 +2,17 @@
     <a (click)="Crear()">
         <div class="card">
             <i class="ti ti-plus"></i>
-            <p>Create new </p>
+            <p>Crear nuevo</p>
         </div>
     </a>
 
     <div class="card" *ngFor="let datos of data;" (click)="AbrirCuestionario(datos)">
         <div class="icon">
-            <i class="ti ti-list-details"></i>
+            <span class="material-symbols-outlined element-icon">
+                edit_note
+            </span>
         </div>
         <h5><span style="color: gray;">{{datos.cabecera.titulo | titlecase}}</span></h5>
         <p>Descripción: <span style="color: gray;">{{datos.cabecera.descripcion}}</span></p>
     </div>
-</div>  
+</div>

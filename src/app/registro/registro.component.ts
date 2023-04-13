@@ -3,6 +3,7 @@ import { LoginService } from '../Services/login.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CompartirDataService } from '../Services/compartir-data.service';
+import { LocalStorageService } from '../Services/local-storage.service';
 
 @Component({
   selector: 'app-registro',
@@ -18,7 +19,8 @@ export class RegistroComponent implements OnInit {
   alert_danger!: boolean;
   alert_success!: boolean;
 
-  constructor(private register_service: LoginService, private formBuilder: FormBuilder, private navegar: Router, private enviarUID: CompartirDataService) { }
+  constructor(private register_service: LoginService, private formBuilder: FormBuilder, private navegar: Router, private enviarUID: CompartirDataService,
+    private localstorage: LocalStorageService) { }
 
   ngOnInit(): void {
     this.RegisterForm = this.formBuilder.group({
@@ -37,17 +39,15 @@ export class RegistroComponent implements OnInit {
     this.register_service.registrar(this.RegisterForm.value).then((respuesta: any) => {
       this.Alerta_success();
 
-      console.log(respuesta);
-      
+      // Enviando los datos al localStorage
+      this.localstorage.set('cuenta', respuesta);
+
+      console.log(this.localstorage.set('cuenta', respuesta));
+
+
       this.enviarUID.EnviarData(respuesta);
       this.navegar.navigate(['/forms/list']);
-        
-      // Ir a la siguiente página 
-      // this.navegar.navigate(['/forms/list']);
 
-      if (this.RegisterForm.value.recordar == true) {
-        this.Recordarme();
-      }
       this.RegisterForm.reset();
     }).catch(error => {
       if (error.code == 'auth/email-already-in-use') {
@@ -66,7 +66,7 @@ export class RegistroComponent implements OnInit {
       this.navegar.navigate(['/forms/list']);
 
       console.log(respuesta);
-      
+
       this.Alerta_success();
     }).catch(error => console.log(error));
   }
@@ -75,17 +75,11 @@ export class RegistroComponent implements OnInit {
     this.register_service.FacebookLogin().then(respuesta => {
       console.log(respuesta);
     }).catch(() => {
-      console.log('Chupamela, no tenes la politica válida')
+      console.log('No tienes la politica válida')
     })
   }
 
-  Recordarme() {
-    this.register_service.Persitencia().then((respuesta) => {
-      console.log('La persistencia está en función', respuesta);
-    }).catch((error) => {
-      console.log('No se pudo agregar la persistencia', error);
-    })
-  }
+  Recordarme() {}
 
   Alerta_danger() {
     this.alert_danger = true;

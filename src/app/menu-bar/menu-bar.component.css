@@ -18,12 +18,10 @@
 .navbar {
     position: relative;
     background: none !important;
-    backdrop-filter: blur(10px);
     padding: 10px 30px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
 }
 
 .navbar-brand {
@@ -36,7 +34,7 @@
     font-size: 26px;
 }
 
-.navbar-brand i {
+.navbar-brand .icon {
     font-size: 43px;
     padding: 0;
     margin: 0;
@@ -50,7 +48,7 @@
 }
 
 .bienvenida {
-    width: 40%;
+    width: 50%;
     display: flex;
     justify-content: flex-end;
     font-size: 26px;
