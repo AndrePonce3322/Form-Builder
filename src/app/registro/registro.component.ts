@@ -62,10 +62,11 @@ export class RegistroComponent implements OnInit {
       // Enviar UID
       this.enviarUID.EnviarData(respuesta);
 
+      // Enviar datos al localStorage
+      this.localstorage.set('cuenta', respuesta);
+
       // Navegar
       this.navegar.navigate(['/forms/list']);
-
-      console.log(respuesta);
 
       this.Alerta_success();
     }).catch(error => console.log(error));
@@ -74,8 +75,8 @@ export class RegistroComponent implements OnInit {
   Facebook() {
     this.register_service.FacebookLogin().then(respuesta => {
       console.log(respuesta);
-    }).catch(() => {
-      console.log('No tienes la politica válida')
+    }).catch((e) => {
+      console.log('No tienes la politica válida=>', e)
     })
   }
 

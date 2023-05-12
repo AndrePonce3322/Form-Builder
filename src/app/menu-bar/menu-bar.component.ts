@@ -6,16 +6,17 @@ import Typed from 'typed.js';
 @Component({
   selector: 'app-menu-bar',
   templateUrl: './menu-bar.component.html',
-  styleUrls: ['./menu-bar.component.css']
+  styleUrls: ['./menu-bar.component.css'],
 })
 export class MenuBarComponent implements OnInit {
-
   nombre: any;
 
-  constructor(private localStorage: LocalStorageService, private navegar: Router) {
-    const full_name = localStorage.get('cuenta').user.displayName;
-
+  constructor(
+    private localStorage: LocalStorageService,
+    private navegar: Router
+  ) {
     try {
+      const full_name = localStorage.get('cuenta').user.displayName;
       this.nombre = full_name.split(' ')[0];
     } catch (error) {
       console.log('No se puede tomar tu nombre');
@@ -25,19 +26,19 @@ export class MenuBarComponent implements OnInit {
   ngOnInit(): void {
     const element_title = document.querySelector('.title-text') as HTMLElement;
 
-    const typed = new Typed(element_title, {
+    new Typed(element_title, {
       strings: ['builder', 'fast'],
       typeSpeed: 30,
       backSpeed: 30,
       backDelay: 10000,
-      loop: true
-    })
+      loop: true,
+    });
   }
 
   CerrarSesion() {
     this.navegar.navigate(['/login']).then(() => {
       this.localStorage.clear();
       console.log('Sesión cerrada correctamente');
-    })
+    });
   }
 }
